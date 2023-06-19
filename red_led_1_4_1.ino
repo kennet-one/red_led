@@ -111,7 +111,7 @@ void receivedCallback( uint32_t from, String &msg ) {
 
   if (str1.equals(str6)) {
    if (led_speed != 0) {
-     led_speed -1;
+     led_speed = led_speed -1;
    }
   }
 
