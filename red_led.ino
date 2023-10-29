@@ -45,8 +45,8 @@ void receivedCallback( uint32_t from, String &msg ) {
   String str2 = "power";
   String str3 = "next_eff";
   String str4 = "red_led_echo";
-  String str5 = "red_led_speed+";
-  String str6 = "red_led_speed-";
+  String str5 = "redl_sp+";
+  String str6 = "redl_sp-";
   String str7 = "red_led_bri+";
   String str8 = "red_led_bri-";
 
@@ -127,12 +127,14 @@ void receivedCallback( uint32_t from, String &msg ) {
   else if (str1.equals(str5)) {
     led_speed ++;
     //Serial.print(led_speed);
+    spFeed();
   }
 
   else if (str1.equals(str6)) {
    if (led_speed != 0) {
       led_speed = led_speed -1;
       //Serial.print(led_speed);
+      spFeed();
     }
   }
 
@@ -195,6 +197,11 @@ void loop(){
   
   FastLED.show();
 
+}
+
+void spFeed(){
+  String spfee = "03" + String(led_speed);
+  mesh.sendSingle(624409705,spfee);
 }
 
 void echoBri(){
