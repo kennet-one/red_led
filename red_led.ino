@@ -121,19 +121,18 @@ void receivedCallback( uint32_t from, String &msg ) {
     mesh.sendSingle(624409705,moode);
 
     echoBri();
+    spFeed();
 
   }////////////////////////////////////////////////////////////////////
 
   else if (str1.equals(str5)) {
     led_speed ++;
-    //Serial.print(led_speed);
     spFeed();
   }
 
   else if (str1.equals(str6)) {
    if (led_speed != 0) {
       led_speed = led_speed -1;
-      //Serial.print(led_speed);
       spFeed();
     }
   }
